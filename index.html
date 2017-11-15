@@ -19,6 +19,7 @@
 
 	<script src="./lib/NiceConsoleHandler.js?v=1"></script>
 	<script src="./lib/DebugConsoleFormatter.js?v=1"></script>
+	<script src="./lib/NameShortenerFilter.js?v=1"></script>
 </head>
 <body>
 	<script type="text/javascript">
@@ -26,14 +27,17 @@
 		var format = '%(name)\t%(message)';
 		var timeFormat = '';
 		var level = 'DEBUG';
+		var filter = null;
 		var handler = null;
 		var formatter = null;
 		var rootLogger = PyLogging.getLogger();
 
+		filter = new PyLogging.NameShortenerFilter();
 		handler = new PyLogging.NiceConsoleHandler();
 
 		//formatter = new PyLogging.Formatter(format, timeFormat);
 		formatter = new PyLogging.DebugConsoleFormatter();
+		handler.addFilter(filter);
 		handler.setFormatter(formatter);
 		rootLogger.addHandler(handler);
 		if (level) {
