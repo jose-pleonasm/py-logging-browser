@@ -57,10 +57,18 @@
 
 		var l1 = PyLogging.getLogger('RichMediaPlayer');
 		var l2 = PyLogging.getLogger('RichMediaPlayer.Tech');
+		var l3 = PyLogging.getLogger('RichMediaPlayer.Tech.Html');
+		var l4 = PyLogging.getLogger('Common.Utils');
+		var l5 = PyLogging.getLogger('Common.AdaptiveController');
+		var l6 = PyLogging.getLogger('Common.Parser');
 		l1.debug('#constructor', null, { data: [{ autoplay: true }] });
+		l4.debug('#extraxt', null, { data: ['{foo:"bar"}'] });
+		l6.debug('#parse', null, { data: ['<text>Lorem ipsum</text>'] });
+		l5.debug('#constructor', null, { data: [] });
 		l2.debug('#constructor', null, { data: [] });
 		l2.debug('#setProfile', null, { data: ['#aa0000', '#00ff00'] });
 		l2.debug('#setContent', null, { data: [{ src: '/video.mp4', type: 'video/mp4' }] });
+		l3.debug('#setContent', null, { data: [{ src: '/video.mp4', type: 'video/mp4' }] });
 	</script>
 </body>
 </html>
