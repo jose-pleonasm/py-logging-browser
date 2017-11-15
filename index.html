@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<title>Py-logging pro web</title>
+
+	<script src="./lib/main.js?v=1"></script>
+	<script src="./lib/util.js?v=1"></script>
+	<script src="./lib/strftime.js?v=1"></script>
+	<script src="./lib/Filterer.js?v=1"></script>
+	<script src="./lib/Logger.js?v=1"></script>
+	<script src="./lib/Formatter.js?v=1"></script>
+	<script src="./lib/Filter.js?v=1"></script>
+	<script src="./lib/Handler.js?v=1"></script>
+	<script src="./lib/ConsoleHandler.js?v=1"></script>
+	<script src="./lib/logging.js?v=1"></script>
+
+	<script src="./lib/NiceConsoleHandler.js?v=1"></script>
+	<script src="./lib/DebugConsoleFormatter.js?v=1"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		// config section
+		var format = '%(name)\t%(message)';
+		var timeFormat = '';
+		var level = 'DEBUG';
+		var handler = null;
+		var formatter = null;
+		var rootLogger = PyLogging.getLogger();
+
+		handler = new PyLogging.NiceConsoleHandler();
+
+		//formatter = new PyLogging.Formatter(format, timeFormat);
+		formatter = new PyLogging.DebugConsoleFormatter();
+		handler.setFormatter(formatter);
+		rootLogger.addHandler(handler);
+		if (level) {
+			if (typeof level === 'string') {
+				level = PyLogging.Logger.getLevelByName(level);
+			}
+			rootLogger.setLevel(level);
+		}
+		// end of config section
+
+
+		var logger = PyLogging.getLogger();
+
+		logger.info('Hello world!');
+		try {
+			callSomeFunction();
+		}
+		catch (error) {
+			logger.critical('Fatal error!', error);
+		}
+
+		var classLogger = PyLogging.getLogger('Main.User');
+		classLogger.debug('#setProfile', null, ['Tomas Novak', 'tomas.novak@email.com']);
+	</script>
+</body>
+</html>
