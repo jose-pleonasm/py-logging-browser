@@ -55,8 +55,12 @@
 			logger.critical('Fatal error!', error);
 		}
 
-		var classLogger = PyLogging.getLogger('Main.User');
-		classLogger.debug('#setProfile', null, ['Tomas Novak', 'tomas.novak@email.com']);
+		var l1 = PyLogging.getLogger('RichMediaPlayer');
+		var l2 = PyLogging.getLogger('RichMediaPlayer.Tech');
+		l1.debug('#constructor', null, { data: [{ autoplay: true }] });
+		l2.debug('#constructor', null, { data: [] });
+		l2.debug('#setProfile', null, { data: ['#aa0000', '#00ff00'] });
+		l2.debug('#setContent', null, { data: [{ src: '/video.mp4', type: 'video/mp4' }] });
 	</script>
 </body>
 </html>
