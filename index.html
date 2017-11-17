@@ -19,7 +19,9 @@
 
 	<script src="./lib/NiceConsoleHandler.js?v=1"></script>
 	<script src="./lib/DebugConsoleFormatter.js?v=1"></script>
+	<script src="./lib/NameCutterFilter.js?v=1"></script>
 	<script src="./lib/NameShortenerFilter.js?v=1"></script>
+	<script src="./lib/ConvenientNameFilter.js?v=1"></script>
 </head>
 <body>
 	<script type="text/javascript">
@@ -27,17 +29,20 @@
 		var format = '%(name)\t%(message)';
 		var timeFormat = '';
 		var level = 'DEBUG';
-		var filter = null;
+		var filterS = null;
+		var filterC = null;
 		var handler = null;
 		var formatter = null;
 		var rootLogger = PyLogging.getLogger();
 
-		filter = new PyLogging.NameShortenerFilter();
+		filterS = new PyLogging.NameCutterFilter('src.');
+		filterC = new PyLogging.ConvenientNameFilter();
 		handler = new PyLogging.NiceConsoleHandler();
 
 		//formatter = new PyLogging.Formatter(format, timeFormat);
 		formatter = new PyLogging.DebugConsoleFormatter();
-		handler.addFilter(filter);
+		handler.addFilter(filterS);
+		handler.addFilter(filterC);
 		handler.setFormatter(formatter);
 		rootLogger.addHandler(handler);
 		if (level) {
@@ -59,12 +64,12 @@
 			logger.critical('Fatal error!', error);
 		}
 
-		var l1 = PyLogging.getLogger('RichMediaPlayer');
-		var l2 = PyLogging.getLogger('RichMediaPlayer.Tech');
-		var l3 = PyLogging.getLogger('RichMediaPlayer.Tech.Html');
-		var l4 = PyLogging.getLogger('Common.Utils');
-		var l5 = PyLogging.getLogger('Common.AdaptiveController');
-		var l6 = PyLogging.getLogger('Common.Parser');
+		var l1 = PyLogging.getLogger('src.RichMediaPlayer');
+		var l2 = PyLogging.getLogger('src.RichMediaPlayer.Tech');
+		var l3 = PyLogging.getLogger('src.RichMediaPlayer.Tech.Html');
+		var l4 = PyLogging.getLogger('src.Common.Utils');
+		var l5 = PyLogging.getLogger('src.Common.AdaptiveController');
+		var l6 = PyLogging.getLogger('src.Common.Parser');
 		l1.debug('#constructor', null, { data: [{ autoplay: true }] });
 		l4.debug('#extraxt', null, { data: ['{foo:"bar"}'] });
 		l6.debug('#parse', null, { data: ['<text>Lorem ipsum</text>'] });
