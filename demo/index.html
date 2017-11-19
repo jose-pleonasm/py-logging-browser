@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<title>Py-logging pro web</title>
+
+	<script src="../dist/logging.js?v=1"></script>
+	<script src="../dist/consolehandler.js?v=1"></script>
+	<script src="../dist/niceconsolehandler.js?v=1"></script>
+	<script src="../dist/niceconsoleformatter.js?v=1"></script>
+	<script src="../dist/namecutterfilter.js?v=1"></script>
+	<script src="../dist/nameshortenerfilter.js?v=1"></script>
+	<script src="../dist/convenientnamefilter.js?v=1"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		// app
+		function App(config) {
+			this.logger = PyLogging.getLogger('App');
+			this.logger.info('Created with config', null, { data: config });
+			this.config = config;
+			this.module = new Module();
+		}
+
+		App.prototype.run = function (mode, timeout) {
+			this.logger.debug('#run', null, { data: [mode, timeout] });
+			try {
+				this.module.start(timeout);
+			}
+			catch (error) {
+				this.logger.critical('Failed to start', error);
+			}
+		};
+
+		function Module() {
+			this.logger = PyLogging.getLogger('App.Module');
+			this.logger.info('Created');
+		}
+
+		Module.prototype.start = function (timeout) {
+			this.logger.debug('#start', null, { data: [timeout] });
+			
+			callSomeFunction();
+		};
+
+		// setup
+		var level = PyLogging.DEBUG;
+		var formatter = new PyLogging.NiceConsoleFormatter();
+		var handler = new PyLogging.NiceConsoleHandler();
+		var filters = [
+			new PyLogging.NameCutterFilter('src.')
+		];
+		var rootLogger = PyLogging.getLogger();
+
+		rootLogger.setLevel(level);
+		filters.forEach(function (filter) {
+			rootLogger.addFilter(filter);
+		});
+		handler.setFormatter(formatter);
+		rootLogger.addHandler(handler);
+
+		// run
+		var logger = PyLogging.getLogger();
+		logger.info('Ready to start');
+
+		var app = new App({ id: 'da20171' });
+		app.run('prod', 2000);
+	</script>
+</body>
+</html>
