@@ -9,7 +9,7 @@
 	<script src="./dist/logging.js?v=1"></script>
 	<script src="./dist/consolehandler.js?v=1"></script>
 	<script src="./dist/niceconsolehandler.js?v=1"></script>
-	<script src="./dist/debugconsoleformatter.js?v=1"></script>
+	<script src="./dist/niceconsoleformatter.js?v=1"></script>
 	<script src="./dist/namecutterfilter.js?v=1"></script>
 	<script src="./dist/nameshortenerfilter.js?v=1"></script>
 	<script src="./dist/convenientnamefilter.js?v=1"></script>
@@ -20,20 +20,17 @@
 		var format = '%(name)\t%(message)';
 		var timeFormat = '';
 		var level = PyLogging.DEBUG;
-		var filterS = null;
-		var filterC = null;
+		var filter = null;
 		var handler = null;
 		var formatter = null;
 		var rootLogger = PyLogging.getLogger();
 
-		filterS = new PyLogging.NameCutterFilter('src.');
-		filterC = new PyLogging.ConvenientNameFilter();
+		filter = new PyLogging.NameCutterFilter('src.');
 		handler = new PyLogging.NiceConsoleHandler();
 
 		//formatter = new PyLogging.Formatter(format, timeFormat);
-		formatter = new PyLogging.DebugConsoleFormatter();
-		handler.addFilter(filterS);
-		handler.addFilter(filterC);
+		formatter = new PyLogging.NiceConsoleFormatter();
+		handler.addFilter(filter);
 		handler.setFormatter(formatter);
 		rootLogger.addHandler(handler);
 		rootLogger.setLevel(level);

@@ -21,7 +21,7 @@ const libFiles = [
 const libFileTemplate = './templates/logging.js';
 const libFilename = 'logging.js';
 const addonFiles = [
-	'./lib/addons/DebugConsoleFormatter.js',
+	'./lib/addons/NiceConsoleFormatter.js',
 	'./lib/addons/ConvenientNameFilter.js',
 	'./lib/addons/NameCutterFilter.js',
 	'./lib/addons/NameShortenerFilter.js',
