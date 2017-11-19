@@ -6,29 +6,20 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
 	<title>Py-logging pro web</title>
 
-	<script src="./lib/main.js?v=1"></script>
-	<script src="./lib/util.js?v=1"></script>
-	<script src="./lib/strftime.js?v=1"></script>
-	<script src="./lib/Filterer.js?v=1"></script>
-	<script src="./lib/Logger.js?v=1"></script>
-	<script src="./lib/Formatter.js?v=1"></script>
-	<script src="./lib/Filter.js?v=1"></script>
-	<script src="./lib/Handler.js?v=1"></script>
-	<script src="./lib/ConsoleHandler.js?v=1"></script>
-	<script src="./lib/logging.js?v=1"></script>
-
-	<script src="./lib/NiceConsoleHandler.js?v=1"></script>
-	<script src="./lib/DebugConsoleFormatter.js?v=1"></script>
-	<script src="./lib/NameCutterFilter.js?v=1"></script>
-	<script src="./lib/NameShortenerFilter.js?v=1"></script>
-	<script src="./lib/ConvenientNameFilter.js?v=1"></script>
+	<script src="./dist/logging.js?v=1"></script>
+	<script src="./dist/consolehandler.js?v=1"></script>
+	<script src="./dist/niceconsolehandler.js?v=1"></script>
+	<script src="./dist/debugconsoleformatter.js?v=1"></script>
+	<script src="./dist/namecutterfilter.js?v=1"></script>
+	<script src="./dist/nameshortenerfilter.js?v=1"></script>
+	<script src="./dist/convenientnamefilter.js?v=1"></script>
 </head>
 <body>
 	<script type="text/javascript">
 		// config section
 		var format = '%(name)\t%(message)';
 		var timeFormat = '';
-		var level = 'DEBUG';
+		var level = PyLogging.DEBUG;
 		var filterS = null;
 		var filterC = null;
 		var handler = null;
@@ -45,12 +36,7 @@
 		handler.addFilter(filterC);
 		handler.setFormatter(formatter);
 		rootLogger.addHandler(handler);
-		if (level) {
-			if (typeof level === 'string') {
-				level = PyLogging.Logger.getLevelByName(level);
-			}
-			rootLogger.setLevel(level);
-		}
+		rootLogger.setLevel(level);
 		// end of config section
 
 

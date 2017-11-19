@@ -1,0 +1,26 @@
+{
+  "name": "py-logging-browser",
+  "version": "1.0.0-dev",
+  "description": "",
+  "main": "dist/logging.js",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-template": "^4.0.0",
+    "run-sequence": "^2.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jose-pleonasm/py-logging-browser.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jose-pleonasm/py-logging-browser/issues"
+  },
+  "homepage": "https://github.com/jose-pleonasm/py-logging-browser#readme"
+}
