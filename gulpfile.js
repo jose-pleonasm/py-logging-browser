@@ -5,6 +5,7 @@ const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const template = require('gulp-template');
 const runSequence = require('run-sequence');
+const uglify = require('gulp-uglify');
 
 const libFiles = [
 	'./lib/polyfills/*.js',
@@ -92,8 +93,20 @@ gulp.task('arrange:addons', async () => {
 	return Promise.all(tasks);
 });
 
-gulp.task('build:core', runSequence('prepare:core', 'arrange:core'));
+gulp.task('uglify', function () {
+	return gulp.src(`${destFolder}/*.js`)
+		.pipe(uglify())
+		.pipe(gulp.dest(destFolder));
+});
 
-gulp.task('build:addons', runSequence('prepare:addons', 'arrange:addons'));
+gulp.task('build:core', (cb) => {
+	runSequence('prepare:core', 'arrange:core', cb);
+});
 
-gulp.task('build', ['build:core', 'build:addons']);
+gulp.task('build:addons', (cb) => {
+	runSequence('prepare:addons', 'arrange:addons', cb);
+});
+
+gulp.task('build', (cb) => {
+	runSequence(['build:core', 'build:addons'], 'uglify', cb);
+});
