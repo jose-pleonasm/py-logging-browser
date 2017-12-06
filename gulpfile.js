@@ -22,7 +22,7 @@ const libFileTemplate = './templates/logging.js';
 const libFilename = 'logging.js';
 const addonFiles = [
 	'./lib/addons/NiceConsoleFormatter.js',
-	'./lib/addons/ConvenientNameFilter.js',
+	'./lib/addons/NameRenamerFilter.js',
 	'./lib/addons/NameCutterFilter.js',
 	'./lib/addons/NameShortenerFilter.js',
 	'./lib/addons/ConsoleHandler.js',

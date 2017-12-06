@@ -12,7 +12,7 @@
 	<script src="../dist/niceconsoleformatter.js?v=1"></script>
 	<script src="../dist/namecutterfilter.js?v=1"></script>
 	<script src="../dist/nameshortenerfilter.js?v=1"></script>
-	<script src="../dist/convenientnamefilter.js?v=1"></script>
+	<script src="../dist/namerenamerfilter.js?v=1"></script>
 </head>
 <body>
 	<script type="text/javascript">
@@ -50,12 +50,14 @@
 		var formatter = new PyLogging.NiceConsoleFormatter();
 		var handler = new PyLogging.NiceConsoleHandler();
 		var filters = [
-			new PyLogging.NameCutterFilter('src.')
+			//new PyLogging.NameCutterFilter('src.')
+			new PyLogging.NameRenamerFilter(/\./g, '/')
 		];
 		var rootLogger = PyLogging.getLogger();
 
 		rootLogger.setLevel(level);
 		filters.forEach(function (filter) {
+			handler.addFilter(filter);
 			rootLogger.addFilter(filter);
 		});
 		handler.setFormatter(formatter);
