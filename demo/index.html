@@ -47,7 +47,9 @@
 
 		// setup
 		var level = PyLogging.DEBUG;
-		var formatter = new PyLogging.NiceConsoleFormatter();
+		var formatter = new PyLogging.NiceConsoleFormatter(
+			'%(name)-20s %(message)-s%(data)-o'
+		);
 		var handler = new PyLogging.NiceConsoleHandler();
 		var filters = [
 			//new PyLogging.NameCutterFilter('src.')
