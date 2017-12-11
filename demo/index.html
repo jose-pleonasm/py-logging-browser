@@ -48,12 +48,12 @@
 		// setup
 		var level = PyLogging.DEBUG;
 		var formatter = new PyLogging.NiceConsoleFormatter(
-			'%(name)-20s %(message)-s%(data)-o'
+			'%(message)-s%(data)-o'
 		);
 		var handler = new PyLogging.NiceConsoleHandler();
 		var filters = [
 			//new PyLogging.NameCutterFilter('src.')
-			new PyLogging.NameRenamerFilter(/\./g, '/')
+			//new PyLogging.NameRenamerFilter(/\./g, '/')
 		];
 		var rootLogger = PyLogging.getLogger();
 
@@ -68,6 +68,7 @@
 		// run
 		var logger = PyLogging.getLogger();
 		logger.info('Ready to start');
+		logger.info('Running...');
 
 		var app = new App({ id: 'da20171' });
 		app.run('prod', 2000);
