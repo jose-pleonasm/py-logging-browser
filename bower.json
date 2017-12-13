@@ -3,7 +3,7 @@
   "description": "Javascript logging library based on the Python logging module",
   "main": "dist/logging.js",
   "authors": [
-    "Jose Pleonasm <jose.pleonasm@gmail.com>"
+    "jose-pleonasm"
   ],
   "license": "MIT",
   "keywords": [

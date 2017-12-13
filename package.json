@@ -1,6 +1,6 @@
 {
   "name": "py-logging-browser",
-  "version": "1.0.0-dev",
+  "version": "0.9.1",
   "description": "",
   "main": "dist/logging.js",
   "devDependencies": {
