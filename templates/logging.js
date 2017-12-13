@@ -9,6 +9,9 @@ if (typeof window === 'object' && window) {
 
 } else if (typeof module === 'object' && module && module.exports) {
 	py_logging_$exports = module.exports;
+
+} else {
+	throw new Error('Unsupported platform.');
 }
 
 (function (exports) {

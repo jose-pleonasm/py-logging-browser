@@ -10,10 +10,13 @@ if (typeof window === 'object' && window) {
 	py_logging_$lib = py_logging_$addon_exports = window.py_logging;
 	py_logging_$util = window.py_logging._util;
 
-} else if (typeof require === 'function') {
+} else if (typeof require === 'function' && typeof module === 'object') {
 	py_logging_$lib = require('./logging');
 	py_logging_$addon_exports = module.exports;
 	py_logging_$util = require('util');
+
+} else {
+	throw new Error('Unsupported platform.');
 }
 
 (function (exports, lib, util) {
