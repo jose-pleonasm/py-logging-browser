@@ -1,5 +1,4 @@
 const py_logging = require('../dist/logging.js');
-const ConsoleHandler = require('../dist/consolehandler.js').ConsoleHandler;
 const NiceConsoleHandler = require('../dist/niceconsolehandler.js').NiceConsoleHandler;
 const NiceConsoleFormatter = require('../dist/niceconsoleformatter.js').NiceConsoleFormatter;
 const NameCutterFilter = require('../dist/namecutterfilter.js').NameCutterFilter;

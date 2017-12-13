@@ -16,6 +16,7 @@ const libFiles = [
 	'./lib/core/Formatter.js',
 	'./lib/core/Filter.js',
 	'./lib/core/Handler.js',
+	'./lib/core/ConsoleHandler.js',
 	'./lib/core/logging.js',
 ];
 const libFileTemplate = './templates/logging.js';
@@ -25,7 +26,6 @@ const addonFiles = [
 	'./lib/addons/NameRenamerFilter.js',
 	'./lib/addons/NameCutterFilter.js',
 	'./lib/addons/NameShortenerFilter.js',
-	'./lib/addons/ConsoleHandler.js',
 	'./lib/addons/NiceConsoleHandler.js',
 ];
 const addonFileTemplate = './templates/addon.js';
