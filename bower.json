@@ -1,6 +1,7 @@
 {
   "name": "py-logging",
   "description": "Javascript logging library based on the Python logging module",
+  "moduleType": "globals",
   "main": "dist/logging.js",
   "authors": [
     "jose-pleonasm"
