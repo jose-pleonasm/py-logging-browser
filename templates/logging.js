@@ -1,6 +1,16 @@
-if (window.PyLogging) {
-	throw new Error('Variable "PyLogging" is already in use.');
+var py_logging_$exports = null;
+
+if (typeof window === 'object' && window) {
+	if (window.py_logging) {
+		throw new Error('Variable "py_logging" is already in use.');
+	}
+
+	py_logging_$exports = window.py_logging = {};
+
+} else if (typeof module === 'object' && module && module.exports) {
+	py_logging_$exports = module.exports;
 }
+
 (function (exports) {
 <%= content %>
-}(window.PyLogging = {}));
+}(py_logging_$exports));

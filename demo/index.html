@@ -18,7 +18,7 @@
 	<script type="text/javascript">
 		// app
 		function App(config) {
-			this.logger = PyLogging.getLogger('App');
+			this.logger = py_logging.getLogger('App');
 			this.logger.info('Created with config', null, { data: config });
 			this.config = config;
 			this.module = new Module();
@@ -35,7 +35,7 @@
 		};
 
 		function Module() {
-			this.logger = PyLogging.getLogger('App.Module');
+			this.logger = py_logging.getLogger('App.Module');
 			this.logger.info('Created');
 		}
 
@@ -46,16 +46,16 @@
 		};
 
 		// setup
-		var level = PyLogging.DEBUG;
-		var formatter = new PyLogging.NiceConsoleFormatter(
+		var level = py_logging.DEBUG;
+		var formatter = new py_logging.NiceConsoleFormatter(
 			'%(message)-s%(data)-o'
 		);
-		var handler = new PyLogging.NiceConsoleHandler();
+		var handler = new py_logging.NiceConsoleHandler();
 		var filters = [
-			//new PyLogging.NameCutterFilter('src.')
-			//new PyLogging.NameRenamerFilter(/\./g, '/')
+			//new py_logging.NameCutterFilter('src.')
+			//new py_logging.NameRenamerFilter(/\./g, '/')
 		];
-		var rootLogger = PyLogging.getLogger();
+		var rootLogger = py_logging.getLogger();
 
 		rootLogger.setLevel(level);
 		filters.forEach(function (filter) {
@@ -66,7 +66,7 @@
 		rootLogger.addHandler(handler);
 
 		// run
-		var logger = PyLogging.getLogger();
+		var logger = py_logging.getLogger();
 		logger.info('Ready to start');
 		logger.info('Running...');
 
