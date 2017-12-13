@@ -23,6 +23,6 @@
     "tests",
     "package-lock.json",
     "package.json",
-    "gulpfile.json"
+    "gulpfile.js"
   ]
 }

@@ -1,0 +1,1 @@
+if(!window.PyLogging)throw new Error("There isn't PyLogging library.");!function(n,i,e){"use strict";function o(){}window.PyLogging._util.inherits(o,i.Filter),o.prototype.filter=function(n){return n.originalname=n.name,n.name=n.name.replace(/\./g,"/"),!0},n.ConvenientNameFilter=o}(window.PyLogging,window.PyLogging);
