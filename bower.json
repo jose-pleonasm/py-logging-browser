@@ -1,0 +1,28 @@
+{
+  "name": "py-logging",
+  "description": "Javascript logging library based on the Python logging module",
+  "main": "dist/logging.js",
+  "authors": [
+    "Jose Pleonasm <jose.pleonasm@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "logging",
+    "logger",
+    "python"
+  ],
+  "homepage": "https://github.com/jose-pleonasm/py-logging-browser",
+  "ignore": [
+    "**/.*",
+    "demo",
+    "templates",
+    "lib",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "package-lock.json",
+    "package.json",
+    "gulpfile.json"
+  ]
+}
